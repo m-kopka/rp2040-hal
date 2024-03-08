@@ -86,7 +86,7 @@ void uart_init(UART_t *uart, uint32_t baudrate, uint8_t tx_gpio, uint8_t rx_gpio
 
     // configure peripheral clock
     clocks_set_aux_source(clk_peri, 0);
-    clocks_enable(clk_peri);
+    clocks_set_enable(clk_peri, true);
 
     // take UART block out of reset
     uart_deinit(uart);
@@ -116,8 +116,8 @@ void uart_init(UART_t *uart, uint32_t baudrate, uint8_t tx_gpio, uint8_t rx_gpio
     rx_fifo[uart_get_index(uart)].data = rx_buffer;
     tx_fifo[uart_get_index(uart)].size = tx_buffer_size;
     rx_fifo[uart_get_index(uart)].size = rx_buffer_size;
-    if (tx_buffer != 0) fifo_flush(&tx_fifo[uart_get_index(uart)]);
-    if (rx_buffer != 0) fifo_flush(&rx_fifo[uart_get_index(uart)]);
+    if (tx_buffer != 0) __fifo_flush(&tx_fifo[uart_get_index(uart)]);
+    if (rx_buffer != 0) __fifo_flush(&rx_fifo[uart_get_index(uart)]);
 
     // enable the TX and RX interrupts and enable the UARTx IRQ in NVIC
     set_bits(uart->IMSC, UART_IMSC_TXIM | UART_IMSC_RXIM);
@@ -138,7 +138,7 @@ void uart_deinit(UART_t *uart) {
 // returns true, if the RX buffer contains new data
 volatile bool uart_has_data(UART_t *uart) {
 
-    return (fifo_has_data(&rx_fifo[uart_get_index(uart)]));
+    return (__fifo_has_data(&rx_fifo[uart_get_index(uart)]));
 }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -146,7 +146,7 @@ volatile bool uart_has_data(UART_t *uart) {
 // flushes the RX buffer
 void uart_flush(UART_t *uart) {
 
-    fifo_flush(&rx_fifo[uart_get_index(uart)]);
+    __fifo_flush(&rx_fifo[uart_get_index(uart)]);
 }
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -156,11 +156,11 @@ void uart_putc(UART_t *uart, char c) {
 
     // don't send if the fifo is full, busy waiting here would potentially cause deadline misses of other tasks or looping indefinetly in case of a fault
     // therefore skipping the bytes is the better option here
-    if (fifo_is_full(&tx_fifo[uart_get_index(uart)])) return;
+    if (__fifo_is_full(&tx_fifo[uart_get_index(uart)])) return;
 
     // disable interrupts while pushing to preserve the correct byte order
     __disable_irq();
-    fifo_push(&tx_fifo[uart_get_index(uart)], c);
+    __fifo_push(&tx_fifo[uart_get_index(uart)], c);
     NVIC_SetPendingIRQ(uart_get_index(uart) ? UART1_IRQ : UART0_IRQ);   // trigger the TX empty interrupt
     __enable_irq();
 }
@@ -194,8 +194,8 @@ void uart_puts(UART_t *uart, const char *str) {
 // reads one byte from the RX buffer; returns -1 if there is no new data
 int16_t uart_getc(UART_t *uart) {
 
-    if (!fifo_has_data(&rx_fifo[uart_get_index(uart)])) return -1;
-    return fifo_pop(&rx_fifo[uart_get_index(uart)]);
+    if (!__fifo_has_data(&rx_fifo[uart_get_index(uart)])) return -1;
+    return __fifo_pop(&rx_fifo[uart_get_index(uart)]);
 }
 
 //---- IRQ HANDLERS ----------------------------------------------------------------------------------------------------------------------------------------------
@@ -205,13 +205,13 @@ static force_inline void uart_handler(UART_t *uart) {
     // transmit fifo empty
     if (bit_is_set(uart->FR, UART_FR_TXFE)) {
 
-        if (fifo_has_data(&tx_fifo[uart_get_index(uart)])) uart->DR = fifo_pop(&tx_fifo[uart_get_index(uart)]);
+        if (__fifo_has_data(&tx_fifo[uart_get_index(uart)])) uart->DR = __fifo_pop(&tx_fifo[uart_get_index(uart)]);
     }
 
     // interrupt was triggered by RX
     if (bit_is_set(uart->RIS, UART_RIS_RXRIS)) {
 
-        if (!fifo_is_full(&rx_fifo[uart_get_index(uart)])) fifo_push(&rx_fifo[uart_get_index(uart)], uart->DR);
+        if (!__fifo_is_full(&rx_fifo[uart_get_index(uart)])) __fifo_push(&rx_fifo[uart_get_index(uart)], uart->DR);
     }
 
     // acknowledge the IRQ

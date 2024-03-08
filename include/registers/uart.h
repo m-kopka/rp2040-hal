@@ -87,7 +87,7 @@ typedef struct {
 #define UART_LCR_H_WLEN_VAL_5BITS   (0)
 #define UART_LCR_H_WLEN_VAL_6BITS   (UART_LCR_H_WLEN0)
 #define UART_LCR_H_WLEN_VAL_7BITS   (UART_LCR_H_WLEN1)
-#define UART_LCR_H_WLEN_VAL_6BITS   (UART_LCR_H_WLEN1 | UART_LCR_H_WLEN0)
+#define UART_LCR_H_WLEN_VAL_8BITS   (UART_LCR_H_WLEN1 | UART_LCR_H_WLEN0)
 
 #define UART_LCR_H_FEN      _BIT(4)     // Enable FIFOs
 #define UART_LCR_H_STP2     _BIT(3)     // Two stop bits select
