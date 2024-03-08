@@ -2,14 +2,13 @@
 .cpu cortex-m0plus
 .thumb
 
-#include "registers/address_map.h"
-
-.equ SIO_DIV_UDIVIDEND_OFFSET,    0x060
-.equ SIO_DIV_UDIVISOR_OFFSET,     0x064
-.equ SIO_DIV_SDIVIDEND_OFFSET,    0x068
-.equ SIO_DIV_SDIVISOR_OFFSET,     0x06c
-.equ SIO_DIV_QUOTIENT_OFFSET,     0x070
-.equ SIO_DIV_REMAINDER_OFFSET,    0x074
+.equ SIO_BASE,                      0xd0000000
+.equ SIO_DIV_UDIVIDEND_OFFSET,      0x060
+.equ SIO_DIV_UDIVISOR_OFFSET,       0x064
+.equ SIO_DIV_SDIVIDEND_OFFSET,      0x068
+.equ SIO_DIV_SDIVISOR_OFFSET,       0x06c
+.equ SIO_DIV_QUOTIENT_OFFSET,       0x070
+.equ SIO_DIV_REMAINDER_OFFSET,      0x074
 
 .macro _div_wait_8_cycles
     b 1f

@@ -1,6 +1,6 @@
 #include "hal/watchdog.h"
 
-static uint32_t load_value;     // load value for the watchdog countdown
+uint32_t load_value;     // load value for the watchdog countdown
 
 //---- FUNCTIONS -------------------------------------------------------------------------------------------------------------------------------------------------
 

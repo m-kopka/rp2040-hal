@@ -28,7 +28,7 @@
 #include "registers/timer.h"
 #include "registers/watchdog.h"
 // TODO: #include "registers/rtc.h"
-// TODO: #include "registers/adc.h"
+#include "registers/adc.h"
 // TODO: #include "registers/ssi.h"
 
 //---- CMSIS CONFIG ----------------------------------------------------------------------------------------------------------------------------------------------
