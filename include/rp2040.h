@@ -4,6 +4,12 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+//---- REGISTER DEFINITIONS --------------------------------------------------------------------------------------------------------------------------------------
+
+#include "registers/vreg.h"
+#include "registers/psm.h"
+#include "registers/resets.h"
+
 //---- CMSIS CONFIG ----------------------------------------------------------------------------------------------------------------------------------------------
 
 #define __CM0PLUS_REV             0x0001        // core revision
