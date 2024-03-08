@@ -2,7 +2,7 @@
 #define _REG_SIO_H_
 
 /*
- *  Single-cycle IO block register definitions
+ *  RP2040 Single-cycle IO block register definitions
  *  Martin Kopka 2022
 */
 

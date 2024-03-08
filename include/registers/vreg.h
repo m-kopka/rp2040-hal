@@ -2,7 +2,7 @@
 #define _REG_VREG_H_
 
 /*
- *  Core supply regulator and chip reset register definitions
+ *  RP2040 Core supply regulator and chip reset register definitions
  *  Martin Kopka 2024
 */
 

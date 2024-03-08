@@ -2,7 +2,7 @@
 #define _REG_RESETS_H_
 
 /*
- *  Subsystem resets register definitions
+ *  RP2040 Subsystem resets register definitions
  *  Martin Kopka 2022
  *
  *  The reset controller allows software control of the resets to all of the peripherals that are not critical to boot the processor in RP2040. This includes:

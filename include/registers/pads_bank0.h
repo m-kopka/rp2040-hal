@@ -2,7 +2,7 @@
 #define _REG_PADS_BANK0_H_
 
 /*
- *  PADS_Bank0 register definitions
+ *  RP2040 PADS_Bank0 register definitions
  *  Martin Kopka 2022
 */
 

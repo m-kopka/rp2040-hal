@@ -14,6 +14,8 @@
 // initializes the pll block
 void pll_init(PLL_t *pll, uint16_t vco_fdiv, uint8_t post_div1, uint8_t post_div2);
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 // disables the pll block
 static inline void pll_disable(PLL_t *pll) {
 

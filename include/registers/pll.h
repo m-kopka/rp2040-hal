@@ -2,7 +2,7 @@
 #define _REG_PLL_H_
 
 /*
- *  PLL register definitions
+ *  RP2040 PLL register definitions
  *  Martin Kopka 2022
  * 
  *  The PLL is designed to take a reference clock, and multiply it using a VCO (Voltage Controlled Oscillator) with a feedback loop.

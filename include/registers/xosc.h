@@ -2,7 +2,7 @@
 #define _REG_XOSC_H_
 
 /*
- *  XOSC register definitions
+ *  RP2040 XOSC register definitions
  *  Martin Kopka 2022
  * 
  *  The Crystal Oscillator (XOSC) uses an external crystal to produce an accurate reference clock. 

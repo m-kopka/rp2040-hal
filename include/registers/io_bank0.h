@@ -2,7 +2,7 @@
 #define _REG_IO_BANK0_H_
 
 /*
- *  IO_Bank0 register definitions
+ *  RP2040 IO_Bank0 register definitions
  *  Martin Kopka 2022
 */
 

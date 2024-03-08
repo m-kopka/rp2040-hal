@@ -26,6 +26,8 @@ static inline void resets_reset_block(uint32_t block) {
     set_bits(RESETS->RESET, block);
 }
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
 // brings specified hardware block (or multiple blocks) out of reset
 static inline void resets_unreset_block(uint32_t block) {
 

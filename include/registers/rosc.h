@@ -2,7 +2,7 @@
 #define _REG_ROSC_H_
 
 /*
- *  ROSC register definitions
+ *  RP2040 ROSC register definitions
  *  Martin Kopka 2024
  * 
  *  The Ring Oscillator (ROSC) is an on-chip oscillator built from a ring of inverters. 
