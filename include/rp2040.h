@@ -21,7 +21,7 @@
 // TODO: #include "registers/tbman.h"
 // TODO: #include "registers/pio.h"
 // TODO: #include "registers/usb.h"
-// TODO: #include "registers/uart.h"
+#include "registers/uart.h"
 // TODO: #include "registers/i2c.h"
 // TODO: #include "registers/spi.h"
 #include "registers/pwm.h"
