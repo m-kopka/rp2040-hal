@@ -6,9 +6,30 @@
 
 //---- REGISTER DEFINITIONS --------------------------------------------------------------------------------------------------------------------------------------
 
+// TODO: #include "registers/sio.h"
 #include "registers/vreg.h"
 #include "registers/psm.h"
 #include "registers/resets.h"
+#include "registers/clocks.h"
+#include "registers/xosc.h"
+#include "registers/rosc.h"
+#include "registers/pll.h"
+// TODO: #include "registers/io_bank0.h"
+// TODO: #include "registers/pads_bank0.h"
+// TODO: #include "registers/sysinfo.h"
+// TODO: #include "registers/syscfg.h"
+// TODO: #include "registers/tbman.h"
+// TODO: #include "registers/pio.h"
+// TODO: #include "registers/usb.h"
+// TODO: #include "registers/uart.h"
+// TODO: #include "registers/i2c.h"
+// TODO: #include "registers/spi.h"
+// TODO: #include "registers/pwm.h"
+// TODO: #include "registers/timer.h"
+// TODO: #include "registers/watchdog.h"
+// TODO: #include "registers/rtc.h"
+// TODO: #include "registers/adc.h"
+// TODO: #include "registers/ssi.h"
 
 //---- CMSIS CONFIG ----------------------------------------------------------------------------------------------------------------------------------------------
 
