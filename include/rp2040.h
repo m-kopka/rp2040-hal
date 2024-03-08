@@ -6,7 +6,7 @@
 
 //---- REGISTER DEFINITIONS --------------------------------------------------------------------------------------------------------------------------------------
 
-// TODO: #include "registers/sio.h"
+#include "registers/sio.h"
 #include "registers/vreg.h"
 #include "registers/psm.h"
 #include "registers/resets.h"
@@ -14,8 +14,8 @@
 #include "registers/xosc.h"
 #include "registers/rosc.h"
 #include "registers/pll.h"
-// TODO: #include "registers/io_bank0.h"
-// TODO: #include "registers/pads_bank0.h"
+#include "registers/io_bank0.h"
+#include "registers/pads_bank0.h"
 // TODO: #include "registers/sysinfo.h"
 // TODO: #include "registers/syscfg.h"
 // TODO: #include "registers/tbman.h"
