@@ -79,23 +79,23 @@
 
 // AHB-Lite Peripherals
 #define AHB_BASE                    0x50000000
-#define DMA_BASE                    0x50000000
+#define DMA_BASE                    ((AHB_BASE) + 0x00000000)
 
 // USB has a DPRAM at its base followed by registers:
-#define USBCTRL_BASE                0x50100000
-#define USBCTRL_DPRAM_BASE          0x50100000
-#define USBCTRL_REGS_BASE           0x50110000
+#define USBCTRL_BASE                ((AHB_BASE) + 0x00100000)
+#define USBCTRL_DPRAM_BASE          ((USBCTRL_BASE) + 0x00000000)
+#define USBCTRL_REGS_BASE           ((USBCTRL_BASE) + 0x00010000)
 
 // Remaining AHB-Lite Peripherals
-#define PIO0_BASE                   0x50200000
-#define PIO1_BASE                   0x50300000
-#define XIP_AUX_BASE                0x50400000
+#define PIO0_BASE                   ((AHB_BASE) + 0x00200000)
+#define PIO1_BASE                   ((AHB_BASE) + 0x00300000)
+#define XIP_AUX_BASE                ((AHB_BASE) + 0x00400000)
 
 //---- IOPORT REGISTERS ------------------------------------------------------------------------------------------------------------------------------------------
 
 // IOPORT Peripherals
 #define IOPORT_BASE                 0xd0000000
-#define SIO_BASE                    0xd0000000
+#define SIO_BASE                    ((IOPORT_BASE) + 0x00000000)
 
 //---- CORTEX-M0+ INTERNAL REGISTERS -----------------------------------------------------------------------------------------------------------------------------
 

@@ -4,6 +4,56 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+//---- CMSIS CONFIG ----------------------------------------------------------------------------------------------------------------------------------------------
+
+#define __CM0PLUS_REV             0x0001        // core revision
+#define __MPU_PRESENT             1             // Memory Protection Unit present
+#define __NVIC_PRIO_BITS          2             // 2 NVIC priority bits
+#define __Vendor_SysTickConfig    0             // SysTick configuration
+#define __FPU_PRESENT             0             // Floating Point Unit not present
+
+//---- INTERRUPTS ------------------------------------------------------------------------------------------------------------------------------------------------
+
+typedef enum {
+
+    // Cortex-M0+ Processor Exceptions
+    NonMaskableInt_IRQn = -14,    // Non maskable interrupt
+    SVCall_IRQn         = -5,     // System Service call via SWI instruction
+    PendSV_IRQn         = -2,     // Pendable request for system service
+    SysTick_IRQn        = -1,     // System tick timer
+
+    // RP2040 specific Interrupts
+    TIMER_IRQ0      = 0,
+    TIMER_IRQ1      = 1,
+    TIMER_IRQ2      = 2,
+    TIMER_IRQ3      = 3,
+    PWM_IRQ         = 4,
+    USBCTRL_IRQ     = 5,
+    XIP_IRQ         = 6,
+    PIO0_IRQ0       = 7,
+    PIO0_IRQ1       = 8,
+    PIO1_IRQ0       = 9,
+    PIO1_IRQ1       = 10,
+    DMA_IRQ0        = 11,
+    DMA_IRQ1        = 12,
+    IO_BANK0_IRQ    = 13,
+    IO_QSPI_IRQ     = 14,
+    SIO_PROC_IRQ0   = 15,
+    SIO_PROC_IRQ1   = 16,
+    CLOCKS_IRQ      = 17,
+    SPI0_IRQ        = 18,
+    SPI1_IRQ        = 19,
+    UART0_IRQ       = 20,
+    UART1_IRQ       = 21,
+    ADC_IRQ         = 22,
+    I2C_IRQ0        = 23,
+    I2C_IRQ1        = 24,
+    RTC_IRQ         = 25
+
+} IRQn_Type;
+
+#include "CMSIS/core_cm0plus.h"
+
 //---- REGISTER MANIPULATION FUNCTIONS ---------------------------------------------------------------------------------------------------------------------------
 
 // set bits in register
