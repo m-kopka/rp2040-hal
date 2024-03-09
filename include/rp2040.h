@@ -1,12 +1,18 @@
 #ifndef _RP2040_H_
 #define _RP2040_H_
 
+/*
+ *  RP2040 Register definitions
+ *  Martin Kopka 2022
+*/
+
 #include <stdint.h>
 #include <stdbool.h>
 
 //---- REGISTER DEFINITIONS --------------------------------------------------------------------------------------------------------------------------------------
 
 #include "registers/sio.h"
+// TODO: #include "registers/dma.h"
 #include "registers/vreg.h"
 #include "registers/psm.h"
 #include "registers/resets.h"
@@ -19,7 +25,7 @@
 // TODO: #include "registers/pio.h"
 // TODO: #include "registers/usb.h"
 #include "registers/uart.h"
-// TODO: #include "registers/i2c.h"
+#include "registers/i2c.h"
 // TODO: #include "registers/spi.h"
 #include "registers/pwm.h"
 #include "registers/timer.h"
