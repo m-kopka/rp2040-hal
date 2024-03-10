@@ -10,6 +10,8 @@
 #include "hal/resets.h"
 #include "hal/fc0.h"
 
+#include "hal/uart.h"
+
 //---- ENUMERATONS -----------------------------------------------------------------------------------------------------------------------------------------------
 
 enum pwm_channel {
@@ -101,7 +103,7 @@ static inline void pwm_set_resolution(uint8_t slice, uint8_t resolution) {
 // calculates the clock divider value according to the specified PWM frequency (note: resolution must be set first)
 static inline void pwm_set_frequency(uint8_t slice, uint32_t frequency_hz) {
 
-    PWM->CH[slice].DIV = (16 * fc0_get_khz(fc0_clk_sys)) / (frequency_hz * (PWM->CH[slice].TOP + 1));
+    PWM->CH[slice].DIV = (16 * fc0_get_hz(fc0_clk_sys)) / (frequency_hz * (PWM->CH[slice].TOP + 1));
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
