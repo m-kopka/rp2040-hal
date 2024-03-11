@@ -26,7 +26,7 @@
 // TODO: #include "registers/usb.h"
 #include "registers/uart.h"
 #include "registers/i2c.h"
-// TODO: #include "registers/spi.h"
+#include "registers/spi.h"
 #include "registers/pwm.h"
 #include "registers/timer.h"
 #include "registers/watchdog.h"
