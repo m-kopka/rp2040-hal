@@ -14,15 +14,17 @@ void spi_init(SPI_t *spi, uint32_t baudrate_hz, uint8_t data_width) {
     uint32_t freq_in = fc0_get_hz(fc0_clk_peri);        // get a peripheral clock frequency
     uint32_t prescale, postdiv;
 
+    // calculate the minimum required prescaler to achieve SSPCLK lower than the specified baud rate
+    // The prescaler must be an even number, division by an odd number is not possible which ensures that a symmetrical, equal mark space ratio, clock is generated
     for (prescale = 2; prescale <= 254; prescale += 2) {
 
-        if (freq_in < (prescale + 2) * 256 * (uint64_t) baudrate_hz) break;
+        if (freq_in / (prescale * (256)) <= baudrate_hz) break;
     }
 
-    for (postdiv = 256; postdiv > 1; --postdiv) {
-
-        if (freq_in / (prescale * (postdiv - 1)) > baudrate_hz) break;
-    }
+    // calculate the required postdiv to achieve the specified baud rate
+    postdiv = freq_in / (baudrate_hz * prescale);
+    if (postdiv > 256) postdiv = 256;
+    if (postdiv == 0) postdiv = 1;
 
     spi->SSPCPSR = prescale;                                                            // clock prescale divisor
     write_masked(spi->SSPCR0, postdiv - 1, SPI_SSPCR0_SCR_MASK, SPI_SSPCR0_SCR_LSB);    // serial clock rate
