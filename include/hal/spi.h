@@ -7,6 +7,7 @@
 */
 
 #include "rp2040.h"
+#include "hal/gpio.h"
 
 //---- FUNCTIONS -------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -46,6 +47,19 @@ static inline void spi_write_blocking(SPI_t *spi, uint16_t data) {
     spi_write(spi, data);
 
     while (!spi_tx_done(spi));
+}
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+// writes to the SPI data register and waits while the data is being sent (software slave select)
+static inline void spi_write_blocking_software_ss(SPI_t *spi, uint16_t data, uint8_t ss_gpio) {
+
+    gpio_write(ss_gpio, LOW);
+    spi_write(spi, data);
+
+    while (!spi_tx_done(spi));
+
+    gpio_write(ss_gpio, HIGH);
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
