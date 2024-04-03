@@ -24,7 +24,7 @@ enum adc_channel_t {
 // initializes the ADC; pll_usb needs to be setup beforehand
 static inline void adc_init() {
 
-    clocks_set_aux_source(clk_adc, 0);
+    clocks_set_aux_source(clk_adc, CLOCK_AUXSRC_ADC_CLKSRC_PLL_USB);
 	clocks_enable(clk_adc);
 
 	resets_reset_block(RESETS_ADC);

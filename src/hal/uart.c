@@ -84,10 +84,6 @@ void uart_init(UART_t *uart, uint32_t baudrate, uint8_t tx_gpio, uint8_t rx_gpio
     if (tx_buffer != 0 && tx_buffer_size == 0) return;      // TX buffer size is 0
     if (rx_buffer != 0 && rx_buffer_size == 0) return;      // RX buffer size is 0
 
-    // configure peripheral clock
-    clocks_set_aux_source(clk_peri, 0);
-    clocks_set_enable(clk_peri, true);
-
     // take UART block out of reset
     uart_deinit(uart);
     resets_unreset_block(uart_get_index(uart) ? RESETS_UART1 : RESETS_UART0);
