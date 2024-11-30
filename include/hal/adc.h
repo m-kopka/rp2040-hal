@@ -25,7 +25,7 @@ enum adc_channel_t {
 static inline void adc_init() {
 
     clocks_set_aux_source(clk_adc, CLOCK_AUXSRC_ADC_CLKSRC_PLL_USB);
-	clocks_enable(clk_adc);
+	clocks_set_enable(clk_adc, true);
 
 	resets_reset_block(RESETS_ADC);
     resets_unreset_block(RESETS_ADC);
