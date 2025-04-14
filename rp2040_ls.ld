@@ -19,6 +19,17 @@ SECTIONS {
         _la_data = .;   /* load address of .data in FLASH */
     } > FLASH
 
+    .sram_text :
+    {
+        . = ALIGN(4);
+        _s_sram_text = .;    /* start address of .sram_text in SRAM */
+        *(.sram_text*)
+        . = ALIGN(4);
+        _e_sram_text = .;                        /* end address of .sram_text in SRAM */
+        _la_sram_text = LOADADDR(.sram_text);     /* load address of .sram_text in FLASH */
+
+    }> SRAM AT> FLASH
+
     .data : {
 
         . = ALIGN(4);

@@ -3,7 +3,7 @@
 #include "hal/clocks.h"
 #include "hal/gpio.h"
 #include "hal/fc0.h"
-#include "utils/string.h"
+#include "stdlib/string.h"
 
 //---- CONSTANTS -------------------------------------------------------------------------------------------------------------------------------------------------
 

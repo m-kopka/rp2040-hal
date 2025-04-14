@@ -114,6 +114,8 @@ typedef enum {
 
 #define force_inline inline __attribute__((always_inline))
 
+#define SRAM_FUNC __attribute__ ((section (".sram_text")))
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #endif /* _RP2040_H_ */
