@@ -16,7 +16,6 @@ SECTIONS {
         *(.rodata*)
         . = ALIGN(4);
 
-        _la_data = .;   /* load address of .data in FLASH */
     } > FLASH
 
     .sram_text :
@@ -36,7 +35,8 @@ SECTIONS {
         _sdata = .;     /* start address of .data in SRAM */
         *(.data*)
         . = ALIGN(4);
-        _edata = .;     /* end address of .data in SRAM */
+        _edata = .;                     /* end address of .data in SRAM */
+        _la_data = LOADADDR(.data);     /* load address of .data in FLASH */
 
     } > SRAM AT> FLASH
 
