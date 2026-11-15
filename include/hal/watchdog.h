@@ -30,6 +30,23 @@ static inline void watchdog_update(void) {
     WATCHDOG->LOAD = load_value;
 }
 
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+// writes a value to the Watchdog scratch register; index 0-7; the value persists through soft reset of the chip
+static inline void watchdog_write_scratch(uint8_t index, uint32_t value) {
+
+    if (index < 8) WATCHDOG->SCRATCH[index] = value;
+}
+
+//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+// reads a value from the Watchdog scratch register; index 0-7
+static inline uint32_t watchdog_read_scratch(uint8_t index) {
+
+    if (index < 8) return WATCHDOG->SCRATCH[index];
+    else return 0;
+}
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #endif /* _HAL_WATCHDOG_H_ */

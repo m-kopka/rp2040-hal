@@ -12,7 +12,7 @@
 //---- REGISTER DEFINITIONS --------------------------------------------------------------------------------------------------------------------------------------
 
 #include "registers/sio.h"
-// TODO: #include "registers/dma.h"
+#include "registers/dma.h"
 #include "registers/vreg.h"
 #include "registers/psm.h"
 #include "registers/resets.h"
