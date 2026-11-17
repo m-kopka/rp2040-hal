@@ -36,11 +36,12 @@
 
 //---- CMSIS CONFIG ----------------------------------------------------------------------------------------------------------------------------------------------
 
-#define __CM0PLUS_REV             0x0001        // core revision
-#define __MPU_PRESENT             1             // Memory Protection Unit present
-#define __NVIC_PRIO_BITS          2             // 2 NVIC priority bits
-#define __Vendor_SysTickConfig    0             // SysTick configuration
-#define __FPU_PRESENT             0             // Floating Point Unit not present
+#define __CM0PLUS_REV               0x0001      // core revision
+#define __MPU_PRESENT               1           // Memory Protection Unit present
+#define __VTOR_PRESENT              1           // Vector Table Offset Register present
+#define __NVIC_PRIO_BITS            2           // 2 NVIC priority bits
+#define __Vendor_SysTickConfig      0           // SysTick configuration
+#define __FPU_PRESENT               0           // Floating Point Unit not present
 
 //---- INTERRUPTS ------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -114,7 +115,7 @@ typedef enum {
 
 #define force_inline inline __attribute__((always_inline))
 
-#define SRAM_FUNC __attribute__ ((section (".sram_text")))
+#define SRAM_FUNC __attribute__((section(".sram_text"), noinline))
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
 

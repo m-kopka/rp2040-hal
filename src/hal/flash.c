@@ -28,7 +28,7 @@ static void SRAM_FUNC flash_init_boot2_ram_copy(void) {
 
 //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-void flash_enable_xip_via_boot2(void) {
+void SRAM_FUNC flash_enable_xip_via_boot2(void) {
 
     ((void (*)(void))((intptr_t)boot2_ram_copy+1))();
 }
